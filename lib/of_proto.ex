@@ -1,0 +1,2 @@
+defmodule OfProto do
+end
