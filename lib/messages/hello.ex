@@ -1,5 +1,7 @@
 defmodule OfProto.Messages.Hello do
-  defstruct version: 1, type: 0, length: 8,  xid: 0
+  import OfProto.Constants
+
+  defstruct version: 4, type: ofp_type[:OFPT_HELLO], length: 8,  xid: 0
 
   def decode(<<version::size(8), type::size(8), length::size(16), xid::size(32)>>) do
     %OfProto.Messages.Hello{version: version, type: type, length: length,  xid: xid}
@@ -9,4 +11,3 @@ defmodule OfProto.Messages.Hello do
     <<version::size(8), type::size(8), length::size(16), xid::size(32)>>
   end
 end
-
