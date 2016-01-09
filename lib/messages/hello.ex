@@ -1,10 +1,12 @@
 defmodule OfProto.Messages.Hello do
-  use BinFormat
+  defstruct version: 1, type: 0, length: 8,  xid: 0
 
-  defformat do
-    integer :version, 0, 8
-    integer :type, 0, 8
-    integer :length, 0, 16
-    integer :xid, 0, 32
+  def decode(<<version::size(8), type::size(8), length::size(16), xid::size(32)>>) do
+    %OfProto.Messages.Hello{version: version, type: type, length: length,  xid: xid}
+  end
+
+  def encode(%OfProto.Messages.Hello{version: version, type: type, length: length, xid: xid}) do
+    <<version::size(8), type::size(8), length::size(16), xid::size(32)>>
   end
 end
+
