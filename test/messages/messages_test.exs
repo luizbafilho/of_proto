@@ -5,7 +5,7 @@ defmodule MessagesTest do
 
   test "hello encode" do
     message = %Messages.Hello{xid: 2670136333}
-    assert Messages.Hello.encode(message) == <<4, 0, 0, 8, 0x9f, 0x27, 0x0c, 0x0d>>
+    assert OfProto.encode(message) == <<4, 0, 0, 8, 0x9f, 0x27, 0x0c, 0x0d>>
   end
 
   test "hello decode" do
@@ -20,7 +20,7 @@ defmodule MessagesTest do
 
   test "EchoReply encode" do
     message = %Messages.EchoReply{xid: 0, data: <<30>>}
-    assert Messages.EchoReply.encode(message) == <<4, 3, 0, 9, 0, 0, 0, 0, 30>>
+    assert OfProto.encode(message) == <<4, 3, 0, 9, 0, 0, 0, 0, 30>>
   end
 
   # test "PacketIn decode" do
