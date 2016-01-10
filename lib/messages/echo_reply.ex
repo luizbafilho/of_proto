@@ -1,5 +1,7 @@
 defmodule OfProto.Messages.EchoReply do
-  defstruct version: 1, type: 2, xid: 0, data: nil
+  import OfProto.Constants
+
+  defstruct version: 4, type: to_index(ofp_type, :OFPT_ECHO_REPLY), xid: 0, data: nil
 
   def encode(%OfProto.Messages.EchoReply{version: version, type: type, xid: xid, data: data}) do
     <<version::size(8), type::size(8), message_length(data)::size(16), xid::size(32), data::bitstring>>

@@ -1,6 +1,8 @@
 defmodule OfProto.Messages.PacketIn do
-  defstruct version: 1,
-            type: 10,
+  import OfProto.Constants
+  
+  defstruct version: 4,
+            type: to_index(ofp_type, :OFPT_PACKET_IN),
             length: 0,
             xid: 0,
             buffer_id: 0,
