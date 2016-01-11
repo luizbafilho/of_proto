@@ -1,3 +1,5 @@
+require Logger
+
 defmodule OfProto.Decoder do
   import OfProto.Constants
   alias OfProto.Messages
@@ -12,4 +14,5 @@ defmodule OfProto.Decoder do
   def do_decode(:OFPT_ECHO_REQUEST, bin), do: Messages.EchoRequest.decode(bin)
   def do_decode(:OFPT_FEATURES_REPLY, bin), do: Messages.FeaturesReply.decode(bin)
   def do_decode(:OFPT_PACKET_IN, bin), do: Messages.PacketIn.decode(bin)
+  def do_decode(type, bin), do: Logger.warn("[Error] Undefined decoder!")
 end

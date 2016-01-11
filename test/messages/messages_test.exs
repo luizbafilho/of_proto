@@ -22,7 +22,7 @@ defmodule MessagesTest do
     message = %Messages.EchoReply{xid: 0, data: <<30>>}
     assert OfProto.encode(message) == <<4, 3, 0, 9, 0, 0, 0, 0, 30>>
   end
-
+  
   # test "PacketIn decode" do
   #   packet_in = File.read!("#{Path.expand("..", __DIR__)}/fixtures/packet_in.bin") |> PacketIn.decode
   #   assert packet_in == %PacketIn{version: 1, type: 10, length: 108, xid: 0, buffer_id: 256, total_len: 90, in_port: 65534, reason: 0}
