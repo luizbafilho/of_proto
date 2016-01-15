@@ -8,6 +8,8 @@ defmodule OfProto.Constants do
     Enum.find_index(list, fn(x) -> x == atom end)
   end
 
+  def ofp_no_buffer, do: 0xffffffff
+  
   def ofp_port_no do
     [
       OFPP_MAX:         0xffffff00,

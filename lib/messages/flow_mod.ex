@@ -4,7 +4,7 @@ defmodule OfProto.Messages.FlowMod do
 
   defstruct version: 4,
             type: to_index(ofp_type, :OFPT_FLOW_MOD),
-            length: 0,
+            length: 384, # Default value without match and instructions fields
             xid: 0,
             cookie: 0,
             cookie_mask: 0,
@@ -13,7 +13,7 @@ defmodule OfProto.Messages.FlowMod do
             idle_timeout: 0,
             hard_timeout: 0,
             priority: 0,
-            buffer_id: 0,
+            buffer_id: ofp_no_buffer,
             out_port: 0,
             out_group: 0,
             flags: 0,
@@ -25,9 +25,11 @@ defmodule OfProto.Messages.FlowMod do
     match        = OfProto.encode(msg.match)
     instructions = OfProto.encode(msg.instructions)
 
+    length = div(msg.length, 8) + byte_size(match) + byte_size(instructions)
+
     << msg.version      :: size(8),
        msg.type         :: size(8),
-       msg.length       :: size(16),
+       length           :: size(16),
        msg.xid          :: size(32),
        msg.cookie       :: size(64),
        msg.cookie_mask  :: size(64),

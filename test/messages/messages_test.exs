@@ -34,8 +34,8 @@ defmodule MessagesTest do
     action      = %Messages.Actions.Output{}
     instruction = %Messages.Instructions.ApplyActions{actions: [action]}
 
-    flow_mod    = %Messages.FlowMod{match: match, instructions: instruction}
-
-    assert Messages.FlowMod.encode(flow_mod) == <<>>
+    flow_mod    = %Messages.FlowMod{xid: 770168906, match: match, instructions: instruction}
+    
+    assert Messages.FlowMod.encode(flow_mod) == TestHelper.read_file("flow_mod.bin")
   end
 end
