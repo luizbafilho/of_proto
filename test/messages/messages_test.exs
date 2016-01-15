@@ -28,4 +28,14 @@ defmodule MessagesTest do
     instruction = %Messages.Instructions.ApplyActions{actions: [action]}
     assert Messages.Instructions.ApplyActions.encode(instruction) == <<0, 4, 0, 24, 0, 0, 0, 0, 0, 0, 0, 16, 255, 255, 255, 253, 255, 255, 0, 0, 0, 0, 0, 0>>
   end
+
+  test "Flow Mod" do
+    match       = %Messages.Match{}
+    action      = %Messages.Actions.Output{}
+    instruction = %Messages.Instructions.ApplyActions{actions: [action]}
+
+    flow_mod    = %Messages.FlowMod{match: match, instructions: instruction}
+
+    assert Messages.FlowMod.encode(flow_mod) == <<>>
+  end
 end

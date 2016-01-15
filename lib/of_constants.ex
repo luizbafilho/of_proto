@@ -109,8 +109,12 @@ defmodule OfProto.Constants do
       OFPAT_EXPERIMENTER: 0xffff
     ]
   end
-  
+
   def ofp_controller_max_len do
     [OFPCML_MAX: 0xffe5, OFPCML_NO_BUFFER: 0xffff]
+  end
+
+  def ofp_match_type do
+    [OFPMT_STANDARD: 0, OFPMT_OXM: 1]
   end
 end
