@@ -4,12 +4,20 @@ defmodule OfProto.Constants do
     list |> Enum.at(index)
   end
 
+  def value_to_atom(list, value) do
+    #It searchs a given keyword list and returns the key given the value
+    list
+    |> Enum.find(fn ({_k, v}) -> v == value end)
+    |> Tuple.to_list
+    |> Enum.at(0)
+  end
+
   def to_index(list, atom) do
     Enum.find_index(list, fn(x) -> x == atom end)
   end
 
   def ofp_no_buffer, do: 0xffffffff
-  
+
   def ofp_port_no do
     [
       OFPP_MAX:         0xffffff00,
@@ -24,6 +32,14 @@ defmodule OfProto.Constants do
     ]
   end
 
+  def ofp_oxm_class do
+    [
+      OFPXMC_NXM_0: 0x0000,
+      OFPXMC_NXM_1: 0x0001,
+      OFPXMC_OPENFLOW_BASIC: 0x8000,
+      OFPXMC_EXPERIMENTER: 0xFFFF
+    ]
+  end
   def ofp_type do
     [
       # Immutable messages.
@@ -118,5 +134,50 @@ defmodule OfProto.Constants do
 
   def ofp_match_type do
     [OFPMT_STANDARD: 0, OFPMT_OXM: 1]
+  end
+
+  def oxm_ofb_match_fields do
+    [
+      OFPXMT_OFB_IN_PORT: 32,
+      OFPXMT_OFB_IN_PHY_PORT: 32,
+      OFPXMT_OFB_METADATA: 64,
+      OFPXMT_OFB_ETH_DST: 48,
+      OFPXMT_OFB_ETH_SRC: 48,
+      OFPXMT_OFB_ETH_TYPE: 16,
+      OFPXMT_OFB_VLAN_VID: 13,
+      OFPXMT_OFB_VLAN_PCP: 3,
+      OFPXMT_OFB_IP_DSCP: 6,
+      OFPXMT_OFB_IP_ECN: 2,
+      OFPXMT_OFB_IP_PROTO: 8,
+      OFPXMT_OFB_IPV4_SRC: 32,
+      OFPXMT_OFB_IPV4_DST: 32,
+      OFPXMT_OFB_TCP_SRC: 16,
+      OFPXMT_OFB_TCP_DST: 16,
+      OFPXMT_OFB_UDP_SRC: 16,
+      OFPXMT_OFB_UDP_DST: 16,
+      OFPXMT_OFB_SCTP_SRC: 16,
+      OFPXMT_OFB_SCTP_DST: 16,
+      OFPXMT_OFB_ICMPV4_TYPE: 8,
+      OFPXMT_OFB_ICMPV4_CODE: 8,
+      OFPXMT_OFB_ARP_OP: 16,
+      OFPXMT_OFB_ARP_SPA: 32,
+      OFPXMT_OFB_ARP_TPA: 32,
+      OFPXMT_OFB_ARP_SHA: 48,
+      OFPXMT_OFB_ARP_THA: 48,
+      OFPXMT_OFB_IPV6_SRC: 128,
+      OFPXMT_OFB_IPV6_DST: 128,
+      OFPXMT_OFB_IPV6_FLABEL: 20,
+      OFPXMT_OFB_ICMPV6_TYPE: 8,
+      OFPXMT_OFB_ICMPV6_CODE: 8,
+      OFPXMT_OFB_IPV6_ND_TARGET: 128,
+      OFPXMT_OFB_IPV6_ND_SLL: 48,
+      OFPXMT_OFB_IPV6_ND_TLL: 48,
+      OFPXMT_OFB_MPLS_LABEL: 20,
+      OFPXMT_OFB_MPLS_TC: 3,
+      OFPXMT_OFP_MPLS_BOS: 1,
+      OFPXMT_OFB_PBB_ISID: 24,
+      OFPXMT_OFB_TUNNEL_ID: 64,
+      OFPXMT_OFB_IPV6_EXTHDR: 9
+    ]
   end
 end

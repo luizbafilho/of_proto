@@ -35,7 +35,13 @@ defmodule MessagesTest do
     instruction = %Messages.Instructions.ApplyActions{actions: [action]}
 
     flow_mod    = %Messages.FlowMod{xid: 770168906, match: match, instructions: instruction}
-    
+
     assert Messages.FlowMod.encode(flow_mod) == TestHelper.read_file("flow_mod.bin")
   end
+
+  test "packet in" do
+    bin = TestHelper.read_file("packet_in.bin")
+    IO.inspect Messages.PacketIn.decode(bin)
+  end
+
 end
