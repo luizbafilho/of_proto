@@ -13,7 +13,12 @@ defmodule OfProto.Constants do
   end
 
   def to_index(list, atom) do
-    Enum.find_index(list, fn(x) -> x == atom end)
+    Enum.find_index(list, fn(x) ->
+      case x do
+        {key, length} -> key == atom
+        key -> key == atom
+      end
+    end)
   end
 
   def ofp_no_buffer, do: 0xffffffff
@@ -138,46 +143,46 @@ defmodule OfProto.Constants do
 
   def oxm_ofb_match_fields do
     [
-      OFPXMT_OFB_IN_PORT: 32,
-      OFPXMT_OFB_IN_PHY_PORT: 32,
-      OFPXMT_OFB_METADATA: 64,
-      OFPXMT_OFB_ETH_DST: 48,
-      OFPXMT_OFB_ETH_SRC: 48,
-      OFPXMT_OFB_ETH_TYPE: 16,
-      OFPXMT_OFB_VLAN_VID: 13,
-      OFPXMT_OFB_VLAN_PCP: 3,
-      OFPXMT_OFB_IP_DSCP: 6,
-      OFPXMT_OFB_IP_ECN: 2,
-      OFPXMT_OFB_IP_PROTO: 8,
-      OFPXMT_OFB_IPV4_SRC: 32,
-      OFPXMT_OFB_IPV4_DST: 32,
-      OFPXMT_OFB_TCP_SRC: 16,
-      OFPXMT_OFB_TCP_DST: 16,
-      OFPXMT_OFB_UDP_SRC: 16,
-      OFPXMT_OFB_UDP_DST: 16,
-      OFPXMT_OFB_SCTP_SRC: 16,
-      OFPXMT_OFB_SCTP_DST: 16,
-      OFPXMT_OFB_ICMPV4_TYPE: 8,
-      OFPXMT_OFB_ICMPV4_CODE: 8,
-      OFPXMT_OFB_ARP_OP: 16,
-      OFPXMT_OFB_ARP_SPA: 32,
-      OFPXMT_OFB_ARP_TPA: 32,
-      OFPXMT_OFB_ARP_SHA: 48,
-      OFPXMT_OFB_ARP_THA: 48,
-      OFPXMT_OFB_IPV6_SRC: 128,
-      OFPXMT_OFB_IPV6_DST: 128,
-      OFPXMT_OFB_IPV6_FLABEL: 20,
-      OFPXMT_OFB_ICMPV6_TYPE: 8,
-      OFPXMT_OFB_ICMPV6_CODE: 8,
-      OFPXMT_OFB_IPV6_ND_TARGET: 128,
-      OFPXMT_OFB_IPV6_ND_SLL: 48,
-      OFPXMT_OFB_IPV6_ND_TLL: 48,
-      OFPXMT_OFB_MPLS_LABEL: 20,
-      OFPXMT_OFB_MPLS_TC: 3,
+      OFPXMT_OFB_IN_PORT: 4,
+      OFPXMT_OFB_IN_PHY_PORT: 4,
+      OFPXMT_OFB_METADATA: 8,
+      OFPXMT_OFB_ETH_DST: 6,
+      OFPXMT_OFB_ETH_SRC: 6,
+      OFPXMT_OFB_ETH_TYPE: 2,
+      OFPXMT_OFB_VLAN_VID: 2,
+      OFPXMT_OFB_VLAN_PCP: 1,
+      OFPXMT_OFB_IP_DSCP: 1,
+      OFPXMT_OFB_IP_ECN: 1,
+      OFPXMT_OFB_IP_PROTO: 1,
+      OFPXMT_OFB_IPV4_SRC: 4,
+      OFPXMT_OFB_IPV4_DST: 4,
+      OFPXMT_OFB_TCP_SRC: 2,
+      OFPXMT_OFB_TCP_DST: 2,
+      OFPXMT_OFB_UDP_SRC: 2,
+      OFPXMT_OFB_UDP_DST: 2,
+      OFPXMT_OFB_SCTP_SRC: 2,
+      OFPXMT_OFB_SCTP_DST: 2,
+      OFPXMT_OFB_ICMPV4_TYPE: 1,
+      OFPXMT_OFB_ICMPV4_CODE: 1,
+      OFPXMT_OFB_ARP_OP: 2,
+      OFPXMT_OFB_ARP_SPA: 4,
+      OFPXMT_OFB_ARP_TPA: 4,
+      OFPXMT_OFB_ARP_SHA: 6,
+      OFPXMT_OFB_ARP_THA: 6,
+      OFPXMT_OFB_IPV6_SRC: 16,
+      OFPXMT_OFB_IPV6_DST: 16,
+      OFPXMT_OFB_IPV6_FLABEL: 4,
+      OFPXMT_OFB_ICMPV6_TYPE: 1,
+      OFPXMT_OFB_ICMPV6_CODE: 1,
+      OFPXMT_OFB_IPV6_ND_TARGET: 16,
+      OFPXMT_OFB_IPV6_ND_SLL: 6,
+      OFPXMT_OFB_IPV6_ND_TLL: 6,
+      OFPXMT_OFB_MPLS_LABEL: 4,
+      OFPXMT_OFB_MPLS_TC: 1,
       OFPXMT_OFP_MPLS_BOS: 1,
-      OFPXMT_OFB_PBB_ISID: 24,
-      OFPXMT_OFB_TUNNEL_ID: 64,
-      OFPXMT_OFB_IPV6_EXTHDR: 9
+      OFPXMT_OFB_PBB_ISID: 3,
+      OFPXMT_OFB_TUNNEL_ID: 8,
+      OFPXMT_OFB_IPV6_EXTHDR: 2
     ]
   end
 end
