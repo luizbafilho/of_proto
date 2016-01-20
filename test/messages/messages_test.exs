@@ -3,6 +3,10 @@ defmodule MessagesTest do
   import OfProto.Constants
   use ExUnit.Case
 
+  def print(bin) do
+    IO.inspect bin|> Base.encode16 |> to_char_list |> Enum.chunk(2)
+  end
+
   test "hello encode" do
     message = %Messages.Hello{xid: 2670136333}
     assert OfProto.encode(message) == <<4, 0, 0, 8, 0x9f, 0x27, 0x0c, 0x0d>>
@@ -39,14 +43,8 @@ defmodule MessagesTest do
     assert Messages.FlowMod.encode(flow_mod) == TestHelper.read_file("flow_mod.bin")
   end
 
-  # test "packet in" do
-  #   bin = TestHelper.read_file("packet_in.bin")
-  #   IO.inspect Messages.PacketIn.decode(bin)
-  # end
-
   test "oxm_field match" do
     oxm_field = %Messages.OxmField{field: :OFPXMT_OFB_IN_PORT, value: 2}
-    # match = %Messages.Match{oxm_fields: [oxm_field]}
     assert OfProto.encode(oxm_field) == <<128, 0, 0, 4, 0, 0, 0, 2>>
   end
 
@@ -56,5 +54,12 @@ defmodule MessagesTest do
     match = %Messages.Match{oxm_fields: [oxm_field1, oxm_field2]}
 
     assert OfProto.encode(match) == <<0, 1, 0, 22, 128, 0, 0, 4, 0, 0, 0, 2, 128, 0, 6, 6, 74, 172, 119, 222, 45, 215, 0, 0>>
+  end
+
+  test "set field action" do
+    oxm_field = %Messages.OxmField{field: :OFPXMT_OFB_ETH_SRC, value: <<0x0,0x0,0x0,0x0,0x0,0x01>>}
+    action = %Messages.Actions.SetField{oxm_field: oxm_field}
+
+    assert OfProto.encode(action) == <<0, 25, 0, 16, 128, 0, 8, 6, 0, 0, 0, 0, 0, 1, 0, 0>>
   end
 end
