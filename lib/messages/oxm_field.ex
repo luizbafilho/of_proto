@@ -20,26 +20,20 @@ defmodule OfProto.Messages.OxmField do
 
   def decode_field(<<header::binary-size(4), bin::binary>>) do
     <<class_int::16, field_int::7, has_mask_int::1, length::8>> = header
-    class = value_to_atom(ofp_oxm_class, class_int)
 
+    class = value_to_atom(ofp_oxm_class, class_int)
     has_mask = has_mask_int == 1
 
-    {field, bit_length} =
-      case class do
-        :openflow_basic ->
-          oxm_ofb_match_fields |> Enum.at(field_int)
-        _ ->
-          {field_int, length * 8}
-      end
+    {field, field_length} = to_atom(oxm_ofb_match_fields, field_int)
 
     case has_mask do
       false ->
-        <<value::size(bit_length), rest::binary>> = bin
-        {%OfProto.Messages.OxmField{value: value, has_mask: has_mask, class: field}, rest}
+        <<value::binary-size(field_length), rest::binary>> = bin
+        {%OfProto.Messages.OxmField{value: value, has_mask: has_mask, class: class, field: field}, rest}
       true ->
-        len = div(bit_length, 2)
+        len = div(field_length, 2)
         <<value::size(len), mask::size(len), rest::binary>> = bin
-        {%OfProto.Messages.OxmField{value: value, has_mask: has_mask, mask: mask, class: field}, rest}
+        {%OfProto.Messages.OxmField{value: value, has_mask: has_mask, class: class, field: field}, rest}
     end
   end
 

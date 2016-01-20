@@ -40,7 +40,8 @@ defmodule OfProto.Messages.PacketIn do
       buffer_id: buffer_id,
       total_len: total_len,
       reason: reason,
-      match: match
+      match: match,
+      data: :pkt.decapsulate(data)
     }
   end
 end

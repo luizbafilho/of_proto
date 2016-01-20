@@ -27,6 +27,6 @@ defmodule OfProto.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:bin_format, "~> 0.0.1"}]
+    [{:pkt, github: "msantos/pkt"}]
   end
 end

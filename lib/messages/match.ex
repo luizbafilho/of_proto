@@ -13,7 +13,7 @@ defmodule OfProto.Messages.Match do
     fields_length = length - @match_header_size
     << fields_bin::binary-size(fields_length), _pad::binary >> = rest
 
-    fields = OfProto.Messages.OmxField.decode(fields_bin)
+    fields = OfProto.Messages.OxmField.decode(fields_bin)
   end
 
   def encode(%{type: type, length: length, fields: fields, pad: pad}) do

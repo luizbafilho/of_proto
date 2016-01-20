@@ -43,6 +43,12 @@ defmodule MessagesTest do
     assert Messages.FlowMod.encode(flow_mod) == TestHelper.read_file("flow_mod.bin")
   end
 
+  test "packet in decode" do
+    packet_in = TestHelper.read_file("packet_in2.bin")
+
+    IO.inspect Messages.PacketIn.decode(packet_in)
+  end
+
   test "oxm_field match" do
     oxm_field = %Messages.OxmField{field: :in_port, value: 2}
     assert OfProto.encode(oxm_field) == <<128, 0, 0, 4, 0, 0, 0, 2>>

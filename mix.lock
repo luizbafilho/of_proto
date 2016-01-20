@@ -1,1 +1,2 @@
-%{"bin_format": {:hex, :bin_format, "0.0.1"}}
+%{"bin_format": {:hex, :bin_format, "0.0.1"},
+  "pkt": {:git, "https://github.com/msantos/pkt.git", "f21be7734da7089cec057385d728d1111694671a", []}}
