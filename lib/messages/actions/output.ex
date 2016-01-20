@@ -4,10 +4,10 @@ defmodule OfProto.Messages.Actions.Output do
 
   @length 16
 
-  defstruct type: ofp_action_type[:OFPAT_OUTPUT],
+  defstruct type: ofp_action_type[:output],
             length: @length,
-            port: ofp_port_no[:OFPP_CONTROLLER],
-            max_len: ofp_controller_max_len[:OFPCML_NO_BUFFER],
+            port: ofp_port_no[:controller],
+            max_len: ofp_controller_max_len[:no_buffer],
             pad: <<0,0,0,0,0,0>>
 
   def encode(action) do

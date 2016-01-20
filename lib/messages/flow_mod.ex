@@ -3,7 +3,7 @@ defmodule OfProto.Messages.FlowMod do
   alias OfProto.Messages, as: M
 
   defstruct version: 4,
-            type: to_index(ofp_type, :OFPT_FLOW_MOD),
+            type: to_index(ofp_type, :flow_mod),
             length: 384, # Default value without match and instructions fields
             xid: 0,
             cookie: 0,

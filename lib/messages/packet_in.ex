@@ -6,7 +6,7 @@ defmodule OfProto.Messages.PacketIn do
   @match_size     8
 
   defstruct version: 4,
-            type: to_index(ofp_type, :OFPT_PACKET_IN),
+            type: to_index(ofp_type, :packet_in),
             length: 0,
             xid: 0,
             buffer_id: 0,

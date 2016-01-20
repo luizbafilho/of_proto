@@ -44,20 +44,20 @@ defmodule MessagesTest do
   end
 
   test "oxm_field match" do
-    oxm_field = %Messages.OxmField{field: :OFPXMT_OFB_IN_PORT, value: 2}
+    oxm_field = %Messages.OxmField{field: :in_port, value: 2}
     assert OfProto.encode(oxm_field) == <<128, 0, 0, 4, 0, 0, 0, 2>>
   end
 
   test "match" do
-    oxm_field1 = %Messages.OxmField{field: :OFPXMT_OFB_IN_PORT, value: 2}
-    oxm_field2 = %Messages.OxmField{field: :OFPXMT_OFB_ETH_DST, value: <<0x4a,0xac,0x77,0xde,0x2d,0xd7>>}
+    oxm_field1 = %Messages.OxmField{field: :in_port, value: 2}
+    oxm_field2 = %Messages.OxmField{field: :eth_dst, value: <<0x4a,0xac,0x77,0xde,0x2d,0xd7>>}
     match = %Messages.Match{oxm_fields: [oxm_field1, oxm_field2]}
 
     assert OfProto.encode(match) == <<0, 1, 0, 22, 128, 0, 0, 4, 0, 0, 0, 2, 128, 0, 6, 6, 74, 172, 119, 222, 45, 215, 0, 0>>
   end
 
   test "set field action" do
-    oxm_field = %Messages.OxmField{field: :OFPXMT_OFB_ETH_SRC, value: <<0x0,0x0,0x0,0x0,0x0,0x01>>}
+    oxm_field = %Messages.OxmField{field: :eth_src, value: <<0x0,0x0,0x0,0x0,0x0,0x01>>}
     action = %Messages.Actions.SetField{oxm_field: oxm_field}
 
     assert OfProto.encode(action) == <<0, 25, 0, 16, 128, 0, 8, 6, 0, 0, 0, 0, 0, 1, 0, 0>>

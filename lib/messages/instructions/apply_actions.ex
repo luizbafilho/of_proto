@@ -3,7 +3,7 @@ defmodule OfProto.Messages.Instructions.ApplyActions do
 
   @header_length 8
 
-  defstruct type: ofp_instruction_type[:OFPIT_APPLY_ACTIONS], pad: 0, actions: []
+  defstruct type: ofp_instruction_type[:apply_actions], pad: 0, actions: []
 
   def encode(instruction) do
     %{type: type, pad: pad, actions: actions} = instruction

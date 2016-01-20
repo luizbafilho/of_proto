@@ -25,164 +25,164 @@ defmodule OfProto.Constants do
 
   def ofp_port_no do
     [
-      OFPP_MAX:         0xffffff00,
-      OFPP_IN_PORT:     0xfffffff8,
-      OFPP_TABLE:       0xfffffff9,
-      OFPP_NORMAL:      0xfffffffa,
-      OFPP_FLOOD:       0xfffffffb,
-      OFPP_ALL:         0xfffffffc,
-      OFPP_CONTROLLER:  0xfffffffd,
-      OFPP_LOCAL:       0xfffffffe,
-      OFPP_ANY:         0xffffffff
+      max:         0xffffff00,
+      in_port:     0xfffffff8,
+      table:       0xfffffff9,
+      normal:      0xfffffffa,
+      flood:       0xfffffffb,
+      all:         0xfffffffc,
+      controller:  0xfffffffd,
+      local:       0xfffffffe,
+      any:         0xffffffff
     ]
   end
 
   def ofp_oxm_class do
     [
-      OFPXMC_NXM_0: 0x0000,
-      OFPXMC_NXM_1: 0x0001,
-      OFPXMC_OPENFLOW_BASIC: 0x8000,
-      OFPXMC_EXPERIMENTER: 0xFFFF
+      nxm_0: 0x0000,
+      nxm_1: 0x0001,
+      openflow_basic: 0x8000,
+      experimenter: 0xffff
     ]
   end
   def ofp_type do
     [
       # Immutable messages.
-      :OFPT_HELLO,
-      :OFPT_ERROR,
-      :OFPT_ECHO_REQUEST,
-      :OFPT_ECHO_REPLY,
-      :OFPT_EXPERIMENTER,
+      :hello,
+      :error,
+      :echo_request,
+      :echo_reply,
+      :experimenter,
 
       # Switch configuration messages. */
-      :OFPT_FEATURES_REQUEST,
-      :OFPT_FEATURES_REPLY,
-      :OFPT_GET_CONFIG_REQUEST,
-      :OFPT_GET_CONFIG_REPLY,
-      :OFPT_SET_CONFIG,
+      :features_request,
+      :features_reply,
+      :get_config_request,
+      :get_config_reply,
+      :set_config,
 
       # Asynchronous messages.
-      :OFPT_PACKET_IN,
-      :OFPT_FLOW_REMOVED,
-      :OFPT_PORT_STATUS,
+      :Ofpt_packet_in,
+      :flow_removed,
+      :port_status,
 
       # Controller command messages.
-      :OFPT_PACKET_OUT,
-      :OFPT_FLOW_MOD,
-      :OFPT_GROUP_MOD,
-      :OFPT_PORT_MOD,
-      :OFPT_TABLE_MOD,
+      :packet_out,
+      :flow_mod,
+      :group_mod,
+      :port_mod,
+      :table_mod,
 
       # Multipart messages.
-      :OFPT_MULTIPART_REQUEST,
-      :OFPT_MULTIPART_REPLY,
+      :multipart_request,
+      :multipart_reply,
 
       # Barrier messages.
-      :OFPT_BARRIER_REQUEST,
-      :OFPT_BARRIER_REPLY,
+      :barrier_request,
+      :barrier_reply,
 
       # Queue Configuration messages.
-      :OFPT_QUEUE_GET_CONFIG_REQUEST,
-      :OFPT_QUEUE_GET_CONFIG_REPLY,
+      :queue_get_config_request,
+      :queue_get_config_reply,
 
       # Controller role change request messages.
-      :OFPT_ROLE_REQUEST,
-      :OFPT_ROLE_REPLY,
+      :role_request,
+      :role_reply,
 
       # Asynchronous message configuration.
-      :OFPT_GET_ASYNC_REQUEST,
-      :OFPT_GET_ASYNC_REPLY,
-      :OFPT_SET_ASYNC,
+      :get_async_request,
+      :get_async_reply,
+      :set_async,
 
       # Meters and rate limiters configuration messages.
-      :OFPT_METER_MOD
+      :meter_mod
     ]
   end
 
   def ofp_instruction_type do
     [
-      OFPIT_GOTO_TABLE:     1,
-      OFPIT_WRITE_METADATA: 2,
-      OFPIT_WRITE_ACTIONS:  3,
-      OFPIT_APPLY_ACTIONS:  4,
-      OFPIT_CLEAR_ACTIONS:  5,
-      OFPIT_METER:          6,
-      OFPIT_EXPERIMENTER:   0xFFFF
+      goto_table:     1,
+      write_metadata: 2,
+      write_actions:  3,
+      apply_actions:  4,
+      clear_actions:  5,
+      meter:          6,
+      experimenter:   0xFFFF
     ]
   end
 
   def ofp_action_type do
     [
-      OFPAT_OUTPUT:       0,
-      OFPAT_COPY_TTL_OUT: 11,
-      OFPAT_COPY_TTL_IN: 12,
-      OFPAT_SET_MPLS_TTL: 15,
-      OFPAT_DEC_MPLS_TTL: 16,
-      OFPAT_PUSH_VLAN: 17,
-      OFPAT_POP_VLAN: 18,
-      OFPAT_PUSH_MPLS: 19,
-      OFPAT_POP_MPLS: 20,
-      OFPAT_SET_QUEUE: 21,
-      OFPAT_GROUP: 22,
-      OFPAT_SET_NW_TTL: 23,
-      OFPAT_DEC_NW_TTL: 24,
-      OFPAT_SET_FIELD: 25,
-      OFPAT_PUSH_PBB: 26,
-      OFPAT_POP_PBB: 27,
-      OFPAT_EXPERIMENTER: 0xffff
+      output:        0,
+      copy_ttl_out:  11,
+      copy_ttl_in:   12,
+      set_mpls_ttl:  15,
+      dec_mpls_ttl:  16,
+      push_vlan:     17,
+      pop_vlan:      18,
+      push_mpls:     19,
+      pop_mpls:      20,
+      set_queue:     21,
+      group:         22,
+      set_nw_ttl:    23,
+      dec_nw_ttl:    24,
+      set_field:     25,
+      push_pbb:      26,
+      pop_pbb:       27,
+      experimenter:  0xffff
     ]
   end
 
   def ofp_controller_max_len do
-    [OFPCML_MAX: 0xffe5, OFPCML_NO_BUFFER: 0xffff]
+    [max: 0xffe5, no_buffer: 0xffff]
   end
 
   def ofp_match_type do
-    [OFPMT_STANDARD: 0, OFPMT_OXM: 1]
+    [standard: 0, oxm: 1]
   end
 
   def oxm_ofb_match_fields do
     [
-      OFPXMT_OFB_IN_PORT: 4,
-      OFPXMT_OFB_IN_PHY_PORT: 4,
-      OFPXMT_OFB_METADATA: 8,
-      OFPXMT_OFB_ETH_DST: 6,
-      OFPXMT_OFB_ETH_SRC: 6,
-      OFPXMT_OFB_ETH_TYPE: 2,
-      OFPXMT_OFB_VLAN_VID: 2,
-      OFPXMT_OFB_VLAN_PCP: 1,
-      OFPXMT_OFB_IP_DSCP: 1,
-      OFPXMT_OFB_IP_ECN: 1,
-      OFPXMT_OFB_IP_PROTO: 1,
-      OFPXMT_OFB_IPV4_SRC: 4,
-      OFPXMT_OFB_IPV4_DST: 4,
-      OFPXMT_OFB_TCP_SRC: 2,
-      OFPXMT_OFB_TCP_DST: 2,
-      OFPXMT_OFB_UDP_SRC: 2,
-      OFPXMT_OFB_UDP_DST: 2,
-      OFPXMT_OFB_SCTP_SRC: 2,
-      OFPXMT_OFB_SCTP_DST: 2,
-      OFPXMT_OFB_ICMPV4_TYPE: 1,
-      OFPXMT_OFB_ICMPV4_CODE: 1,
-      OFPXMT_OFB_ARP_OP: 2,
-      OFPXMT_OFB_ARP_SPA: 4,
-      OFPXMT_OFB_ARP_TPA: 4,
-      OFPXMT_OFB_ARP_SHA: 6,
-      OFPXMT_OFB_ARP_THA: 6,
-      OFPXMT_OFB_IPV6_SRC: 16,
-      OFPXMT_OFB_IPV6_DST: 16,
-      OFPXMT_OFB_IPV6_FLABEL: 4,
-      OFPXMT_OFB_ICMPV6_TYPE: 1,
-      OFPXMT_OFB_ICMPV6_CODE: 1,
-      OFPXMT_OFB_IPV6_ND_TARGET: 16,
-      OFPXMT_OFB_IPV6_ND_SLL: 6,
-      OFPXMT_OFB_IPV6_ND_TLL: 6,
-      OFPXMT_OFB_MPLS_LABEL: 4,
-      OFPXMT_OFB_MPLS_TC: 1,
-      OFPXMT_OFP_MPLS_BOS: 1,
-      OFPXMT_OFB_PBB_ISID: 3,
-      OFPXMT_OFB_TUNNEL_ID: 8,
-      OFPXMT_OFB_IPV6_EXTHDR: 2
+      in_port:        4,
+      in_phy_port:    4,
+      metadata:       8,
+      eth_dst:        6,
+      eth_src:        6,
+      eth_type:       2,
+      vlan_vid:       2,
+      vlan_pcp:       1,
+      ip_dscp:        1,
+      ip_ecn:         1,
+      ip_proto:       1,
+      ipv4_src:       4,
+      ipv4_dst:       4,
+      tcp_src:        2,
+      tcp_dst:        2,
+      udp_src:        2,
+      udp_dst:        2,
+      sctp_src:       2,
+      sctp_dst:       2,
+      icmpv4_type:    1,
+      icmpv4_code:    1,
+      arp_op:         2,
+      arp_spa:        4,
+      arp_tpa:        4,
+      arp_sha:        6,
+      arp_tha:        6,
+      ipv6_src:       16,
+      ipv6_dst:       16,
+      ipv6_flabel:    4,
+      icmpv6_type:    1,
+      icmpv6_code:    1,
+      ipv6_nd_target: 16,
+      ipv6_nd_sll:    6,
+      ipv6_nd_tll:    6,
+      mpls_label:     4,
+      mpls_tc:        1,
+      mpls_bos:       1,
+      pbb_isid:       3,
+      tunnel_id:      8,
+      ipv6_exthdr:    2
     ]
   end
 end

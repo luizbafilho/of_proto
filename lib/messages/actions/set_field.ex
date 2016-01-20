@@ -4,7 +4,7 @@ defmodule OfProto.Messages.Actions.SetField do
   @header_length 4
   @pad           0
 
-  defstruct type: ofp_action_type[:OFPAT_SET_FIELD],
+  defstruct type: ofp_action_type[:set_field],
             oxm_field: nil
 
   def encode(%{type: type, oxm_field: oxm_field}) do

@@ -3,7 +3,7 @@ defmodule OfProto.Messages.Match do
 
   @match_header_size 4
 
-  defstruct type: ofp_match_type[:OFPMT_OXM],
+  defstruct type: ofp_match_type[:oxm],
             length: 4,
             pad: 0,
             oxm_fields: []

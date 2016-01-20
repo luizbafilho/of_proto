@@ -3,7 +3,7 @@ defmodule OfProto.Messages.OxmField do
 
   @match_size 8
 
-  defstruct class: :OFPXMC_OPENFLOW_BASIC,
+  defstruct class: :openflow_basic,
             has_mask: false,
             field: nil,
             mask: <<>>,
@@ -26,7 +26,7 @@ defmodule OfProto.Messages.OxmField do
 
     {field, bit_length} =
       case class do
-        :OFPXMC_OPENFLOW_BASIC ->
+        :openflow_basic ->
           oxm_ofb_match_fields |> Enum.at(field_int)
         _ ->
           {field_int, length * 8}
@@ -57,7 +57,7 @@ defmodule OfProto.Messages.OxmField do
 
     size = length * 8
     rest = to_binary(rest, size)
-    
+
     <<class_int::16, field_int::7, has_mask_int::1, length::8, rest::binary>>
   end
 
