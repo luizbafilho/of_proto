@@ -49,9 +49,7 @@ defmodule MessagesTest do
   end
 
   test "match" do
-    oxm_field1 = %Messages.OxmField{field: :in_port, value: 2}
-    oxm_field2 = %Messages.OxmField{field: :eth_dst, value: <<0x4a,0xac,0x77,0xde,0x2d,0xd7>>}
-    match = %Messages.Match{oxm_fields: [oxm_field1, oxm_field2]}
+    match = %Messages.Match{fields: [in_port: 2, eth_dst: <<0x4a,0xac,0x77,0xde,0x2d,0xd7>>]}
 
     assert OfProto.encode(match) == <<0, 1, 0, 22, 128, 0, 0, 4, 0, 0, 0, 2, 128, 0, 6, 6, 74, 172, 119, 222, 45, 215, 0, 0>>
   end
