@@ -62,7 +62,7 @@ defmodule OfProto.Constants do
       :set_config,
 
       # Asynchronous messages.
-      :Ofpt_packet_in,
+      :packet_in,
       :flow_removed,
       :port_status,
 
